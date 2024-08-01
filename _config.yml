@@ -1,7 +1,7 @@
 # Site settings
 title: Joey Blog
 SEOTitle: Joey的博客 | Joey Blog
-header-img: img/home-bg.jpg
+header-img: img/home-bg.png
 email: tianjiegsd@gmail.com
 description: "这里是 @Joey 的个人博客，与你一起发现更大的世界"
 keyword: "Joey, @Joey, Joey的博客, Joey Blog, 博客, 个人网站, 互联网, Web, Java, 后端, Spring"
@@ -13,10 +13,10 @@ future: true
 
 # SNS settings
 RSS: false
-weibo_username: huxpro
-zhihu_username: huxpro
-github_username: huxpro
-twitter_username: huxpro
+#weibo_username: huxpro
+#zhihu_username: huxpro
+#github_username: huxpro
+#twitter_username: huxpro
 #facebook_username:  huxpro
 #linkedin_username:  firstname-lastname-idxxxx
 
@@ -74,7 +74,7 @@ ga_domain: huangxuan.me
 
 # Sidebar settings
 sidebar: true # whether or not using Sidebar.
-sidebar-about-description: "要做一个有 swag 的程序员 <br> React Team @ Meta"
+sidebar-about-description: "天不言而四时行，地不语而百物生。"
 sidebar-avatar: https://github.com/JoeyDirectives.png # use absolute URL, seeing it's used in both `/` and `/about/`
 
 # Featured Tags
