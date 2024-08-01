@@ -1694,3 +1694,11 @@ img::-moz-selection {
 .no-scroll {
   overflow-y: hidden;
 }
+html {
+  filter: invert(1) hue-rotate(180deg);
+  img,
+  video,
+  .exclude {
+    filter: invert(1) hue-rotate(180deg);
+  }
+}
