@@ -68,7 +68,6 @@
 
 body {
   background-color: var(--bg-color);
-  user-select: none;
   margin: 0;
 }
 
@@ -323,7 +322,6 @@ color:  var(--main-heading-color);
   margin: 1em;
   width: 160px;
   overflow: hidden;
-  user-select: none;
   color: #000000;
   text-transform: uppercase;
   border-radius: 3px;
@@ -1883,10 +1881,8 @@ html.has-scroll-smooth {
   overflow: hidden; }
 
 html.has-scroll-dragging {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none; }
+  
+}
 
 .has-scroll-smooth body {
   overflow: hidden; }
