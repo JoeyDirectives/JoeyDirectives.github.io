@@ -1,7 +1,7 @@
 ---
 layout:       post
 title:        "Adaptive Hash Index"
-author:       "joey"
+author:       "Joey"
 header-style: text
 catalog:      true
 tags:

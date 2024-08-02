@@ -1,7 +1,7 @@
 ---
 layout:       post
 title:        "@Import 原理"
-author:       "joey"
+author:       "Joey"
 header-style: text
 catalog:      true
 tags:
