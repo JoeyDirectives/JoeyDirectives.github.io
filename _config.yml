@@ -75,7 +75,7 @@ ga_domain: huangxuan.me
 # Sidebar settings
 sidebar: true # whether or not using Sidebar.
 sidebar-about-description: "天不言而四时行，地不语而百物生。"
-sidebar-avatar: https://github.com/JoeyDirectives.png # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-avatar: https://note.youdao.com/yws/api/personal/file/WEBed6f311367117b73faf7d10c09091583?method=download&shareKey=df6bdc715f2c8341eaeb33c61f9cb02b # use absolute URL, seeing it's used in both `/` and `/about/`
 
 # Featured Tags
 featured-tags: true # whether or not using Feature-Tags
