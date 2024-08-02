@@ -1136,14 +1136,14 @@ samp {
   background-color: #404040;
 }
 .navbar-custom.invert .navbar-brand {
-  color: #404040;
+  color: #bfbfbf;
 }
 .navbar-custom.invert .navbar-brand:hover,
 .navbar-custom.invert .navbar-brand:focus {
   color: var(--main-color);
 }
 .navbar-custom.invert .nav li a {
-  color: #404040;
+  color: #bfbfbf;
 }
 .navbar-custom.invert .nav li a:hover,
 .navbar-custom.invert .nav li a:focus {
