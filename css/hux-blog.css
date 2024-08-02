@@ -67,6 +67,7 @@
     -webkit-user-select: none;
   }
 }
+
 @media (min-width: 1200px) {
   .post-container,
   .sidebar-container {
@@ -79,30 +80,30 @@
   }
 }
 .sidebar-container {
-  color: #bfbfbf;
+  color: var(--sidebar-aux);
   font-size: 14px;
 }
 .sidebar-container h5 {
-  color: #a3a3a3;
+  color: var(--sidebar-main);
   padding-bottom: 1em;
 }
 .sidebar-container h5 a {
-  color: #a3a3a3 !important;
+  color: var(--sidebar-main) !important;
   text-decoration: none;
 }
 .sidebar-container a {
-  color: #bfbfbf !important;
+  color: var(--sidebar-aux) !important;
 }
 .sidebar-container a:hover,
 .sidebar-container a:active {
-  color: #0085a1 !important;
+  color: var(--main-color) !important;
 }
 .sidebar-container .tags a {
-  border-color: #bfbfbf;
+  border-color: var(--sidebar-aux);
 }
 .sidebar-container .tags a:hover,
 .sidebar-container .tags a:active {
-  border-color: #0085a1;
+  border-color: var(--main-color);
 }
 .sidebar-container .short-about img {
   width: 80%;
@@ -198,7 +199,7 @@
   background-color: #f5f5f5;
 }
 .side-catalog .catalog-body .active a {
-  color: #0085a1 !important;
+  color: var(--main-color) !important;
 }
 @media (max-width: 1200px) {
   .side-catalog {
@@ -267,7 +268,7 @@
   border: none;
   font-size: inherit;
   text-transform: uppercase;
-  color: #ffeb3b;
+  color: var(--main-color);
   margin: 0px 0px 0px 24px;
   padding: 0px;
   min-width: min-content;
@@ -286,7 +287,7 @@
   color: #000000;
   text-transform: uppercase;
   border-radius: 3px;
-  outline-color: #a3a3a3;
+  outline-color: var(--sidebar-main);
 }
 .paper-button:hover {
   cursor: pointer;
@@ -336,7 +337,7 @@ button.paper-button {
   background-color: #ffffff;
 }
 .paper-button input[type="submit"] {
-  outline-color: #a3a3a3;
+  outline-color: var(--sidebar-main);
 }
 .paper-button.colored.raised-button input[type="submit"] {
   color: #ffffff;
@@ -644,7 +645,7 @@ pre.highlight {
   bottom: 0;
   left: 0;
   z-index: 100;
-  background: #fff;
+  background: var(--search-page);
   -webkit-transition: all 400ms cubic-bezier(0.32, 1, 0.23, 1);
   transition: all 400ms cubic-bezier(0.32, 1, 0.23, 1);
   -webkit-transform: translate(0, 100%);
@@ -691,7 +692,7 @@ pre.highlight {
   width: 100%;
   font-size: 30px;
   font-weight: bold;
-  color: #404040;
+  color: var(--search-color);
 }
 @media only screen and (min-width: 768px) {
   .search-page #search-input {
@@ -708,7 +709,7 @@ pre.highlight {
 .search-icon-close {
   cursor: pointer;
   font-size: 30px;
-  color: #311e3e;
+  color: var(--search-bar);
   -webkit-transition: all 0.25s;
   transition: all 0.25s;
 }
@@ -728,7 +729,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Arial", "PingFang SC", "Hiragino Sans GB", "STHeiti", "Microsoft YaHei", "Microsoft JhengHei", "Source Han Sans SC", "Noto Sans CJK SC", "Source Han Sans CN", "Noto Sans SC", "Source Han Sans TC", "Noto Sans CJK TC", "WenQuanYi Micro Hei", SimSun, sans-serif;
   line-height: 1.7;
   font-size: 16px;
-  color: #404040;
+  color: var(--main-context-color);
   overflow-x: hidden;
   text-rendering: auto;
   -webkit-font-smoothing: antialiased;
@@ -765,7 +766,7 @@ a {
 }
 a:hover,
 a:focus {
-  color: #0085a1;
+  color: var(--main-color);
 }
 a img:hover,
 a img:focus {
@@ -775,7 +776,7 @@ article {
   overflow: hidden;
 }
 blockquote {
-  color: gray;
+  color: var(--main-context-color);
   font-style: italic;
   font-size: 0.95em;
   margin: 20px 0 20px;
@@ -813,7 +814,7 @@ table.table > tbody th,
 table.table > thead th,
 table.table > tbody td,
 table.table > thead td {
-  border: 1px solid #eee !important;
+  border: 1px solid var(--search-bar) !important;
 }
 @media screen and (max-width: 767px) {
   .table-responsive {
@@ -850,7 +851,7 @@ samp {
 }
 .post-container a:hover,
 .post-container a:focus {
-  color: #0085a1;
+  color: var(--main-color);
 }
 .post-container h1,
 .post-container h2,
@@ -879,7 +880,7 @@ samp {
 .post-container h4 {
   font-size: 22px;
   font-weight: 600;
-  color: gray;
+  color: var(--main-post-header);
 }
 .post-container h4 + p {
   margin-top: 10px;
@@ -960,7 +961,7 @@ samp {
   width: 100%;
 }
 .post-container .pager li > a > span {
-  color: #a3a3a3;
+  color: var(--sidebar-main);
   font-weight: normal;
   letter-spacing: 0.5px;
 }
@@ -978,7 +979,7 @@ samp {
     position: absolute;
     right: 0;
     border: none;
-    background: white;
+    background: var(--bg-color);
     box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.2);
     box-shadow: rgba(0, 0, 0, 0.117647) 0px 1px 6px, rgba(0, 0, 0, 0.239216) 0px 1px 4px;
     border-radius: 2px;
@@ -1114,14 +1115,14 @@ samp {
 }
 .navbar-custom.invert .navbar-brand:hover,
 .navbar-custom.invert .navbar-brand:focus {
-  color: #0085a1;
+  color: var(--main-color);
 }
 .navbar-custom.invert .nav li a {
   color: #404040;
 }
 .navbar-custom.invert .nav li a:hover,
 .navbar-custom.invert .nav li a:focus {
-  color: #0085a1;
+  color: var(--main-color);
 }
 @media only screen and (min-width: 1170px) {
   .navbar-custom {
@@ -1152,14 +1153,14 @@ samp {
   }
   .navbar-custom.is-fixed .navbar-brand:hover,
   .navbar-custom.is-fixed .navbar-brand:focus {
-    color: #0085a1;
+    color: var(--main-color);
   }
   .navbar-custom.is-fixed .nav li a {
     color: #404040;
   }
   .navbar-custom.is-fixed .nav li a:hover,
   .navbar-custom.is-fixed .nav li a:focus {
-    color: #0085a1;
+    color: var(--main-color);
   }
   .navbar-custom.is-visible {
     /* if the user changes the scrolling direction, we show the header */
@@ -1241,6 +1242,7 @@ samp {
 .intro-header .page-heading h1 {
   margin-top: 0;
   font-size: 50px;
+  color: var(--main-heading-color);
 }
 .intro-header .site-heading .subheading,
 .intro-header .page-heading .subheading {
@@ -1357,7 +1359,7 @@ samp {
 }
 .post-preview > .post-meta > a:hover,
 .post-preview > .post-meta > a:focus {
-  color: #0085a1;
+  color: var(--main-color);
   text-decoration: underline;
 }
 @media only screen and (min-width: 768px) {
@@ -1376,10 +1378,10 @@ samp {
 .post-content-preview {
   font-size: 13px;
   font-style: italic;
-  color: #a3a3a3;
+  color: var(--sidebar-main);
 }
 .post-content-preview:hover {
-  color: #0085a1;
+  color: var(--main-color);
 }
 @media only screen and (min-width: 768px) {
   .post-content-preview {
@@ -1419,7 +1421,7 @@ footer .copyright a {
 }
 footer .copyright a:hover,
 footer .copyright a:focus {
-  color: #0085a1;
+  color: var(--main-color);
 }
 .btn {
   /* Hux learn from
@@ -1441,8 +1443,8 @@ footer .copyright a:focus {
 }
 .btn-default:hover,
 .btn-default:focus {
-  background-color: #0085a1;
-  border: 1px solid #0085a1;
+  background-color: var(--main-color);
+  border: 1px solid var(--main-color);
   color: white;
 }
 .pager {
@@ -1473,13 +1475,13 @@ footer .copyright a:focus {
   }
 }
 .pager li > a {
-  color: #404040;
+  color: var(--next-btn-text-deactivated);
 }
 .pager li > a:hover,
 .pager li > a:focus {
   color: white;
-  background-color: #0085a1;
-  border: 1px solid #0085a1;
+  background-color: var(--main-color);
+  border: 1px solid var(--main-color);
 }
 .pager li > a:hover > span,
 .pager li > a:focus > span {
@@ -1489,19 +1491,19 @@ footer .copyright a:focus {
 .pager .disabled > a:hover,
 .pager .disabled > a:focus,
 .pager .disabled > span {
-  color: #a3a3a3;
+  color: var(--sidebar-main);
   background-color: #404040;
   cursor: not-allowed;
 }
 ::-moz-selection {
   color: white;
   text-shadow: none;
-  background: #0085a1;
+  background: var(--selection-color);
 }
 ::selection {
   color: white;
   text-shadow: none;
-  background: #0085a1;
+  background: var(--selection-color);
 }
 img::selection {
   color: white;
@@ -1585,7 +1587,7 @@ img::-moz-selection {
 #tag_cloud .tag:active,
 #tag_cloud a.focus,
 #tag_cloud .tag.focus {
-  background-color: #0085a1 !important;
+  background-color: var(--main-color) !important;
 }
 #tag_cloud a.focus,
 #tag_cloud .tag.focus {
@@ -1594,7 +1596,7 @@ img::-moz-selection {
 #tag_cloud a.tag-button--all,
 #tag_cloud .tag.tag-button--all {
   font-weight: 700;
-  color: #0085a1 !important;
+  color: var(--main-color) !important;
 }
 #tag_cloud a.tag-button--all:hover,
 #tag_cloud .tag.tag-button--all:hover,
@@ -1621,7 +1623,7 @@ img::-moz-selection {
   margin-top: 0px;
 }
 .listing-seperator {
-  color: #0085a1;
+  color: var(--main-color);
   font-size: 21px !important;
 }
 .listing-seperator::before {
