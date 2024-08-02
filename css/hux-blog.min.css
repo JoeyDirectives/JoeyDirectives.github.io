@@ -1476,16 +1476,16 @@ samp {
   }
 }
 .post-content-preview {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: var(--sidebar-main);
+  font-size: 13px;
+  font-style: italic;
+  color: #a3a3a3;
 }
 .post-content-preview:hover {
-  color: var(--main-color);
+  color: #0085a1;
 }
 @media only screen and (min-width: 768px) {
   .post-content-preview {
-    font-size: 17px;
+    font-size: 14px;
   }
 }
 .section-heading {
