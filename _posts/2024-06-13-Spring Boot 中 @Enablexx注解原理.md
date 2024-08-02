@@ -32,7 +32,7 @@ public class PersonConfig2 {
 @Documented
 @Import(AsyncConfigurationSelector.class)
 public @interface EnableAsync {
-……
+
 }
 ```
 
