@@ -30,6 +30,9 @@
 }  
 
 
+.side-catalog::-webkit-scrollbar {  /*隐藏滚轮*/
+    display: none;  
+}
 
 body {
   background-color: var(--bg-color);
