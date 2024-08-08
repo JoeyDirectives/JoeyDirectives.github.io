@@ -13,6 +13,7 @@ tags:
 先说大致的结论（完整结论在文末）：
 
 > 在语义相同，有索引的情况下：group by和distinct都能使用索引，效率相同。
+> 
 > 在语义相同，无索引的情况下：distinct效率高于group by。原因是distinct 和 group by都会进行分组操作，但group by可能会进行排序，触发filesort，导致sql执行效率低下。
 
 ### distinct的使用
@@ -77,7 +78,7 @@ SELECT columns FROM table_name WHERE where_conditions GROUP BY columns;
 
 执行：
 
-```mysql
+```sql
 mysql> select age from student group by age;
 +------+
 | age  |
@@ -100,7 +101,7 @@ SELECT columns FROM table_name WHERE where_conditions GROUP BY columns;
 
 执行：
 
-```mysql
+```sql
 mysql> select sex,age from student group by sex,age;
 +--------+------+
 | sex    | age  |
@@ -119,7 +120,7 @@ mysql> select sex,age from student group by sex,age;
  两者的语法区别在于，group by可以进行单列去重，group by的原理是先对结果进行分组排序，然后返回**每组中的第一条**数据。且是根据group by的后接字段进行去重的。
 例如：
 
-```mysql
+```sql
 mysql> select sex,age from student group by sex;
 +--------+-----+
 | sex    | age |
@@ -136,7 +137,7 @@ mysql> select sex,age from student group by sex;
 
 DISTINCT和GROUP BY都是**可以使用索引进行扫描搜索**的。例如以下两条sql（只单单看表格最后extra的内容），我们对这两条sql进行分析，可以看到，在extra中，这两条sql都使用了紧凑索引扫描`Using index for group-by`。所以，在一般情况下，对于相同语义的DISTINCT和GROUP BY语句，我们可以对其使用相同的索引优化手段来进行优化。
 
-```mysql
+```sql
 mysql> explain select int1_index from test_distinct_groupby group by int1_index;
 +----+-------------+-----------------------+------------+-------+---------------+---------+---------+------+------+----------+--------------------------+
 | id | select_type | table                 | partitions | type  | possible_keys | key     | key_len | ref  | rows | filtered | Extra                    |
@@ -158,7 +159,7 @@ mysql> explain select distinct int1_index from test_distinct_groupby;
  但对于GROUP BY来说，在MYSQL8.0之前，GROUP Y默认会依据字段进行**隐式排序**。
  可以看到，下面这条sql语句在使用了临时表的同时，还进行了filesort。
 
-```mysql
+```sql
 mysql> explain select int6_bigger_random from test_distinct_groupby GROUP BY int6_bigger_random;
 +----+-------------+-----------------------+------------+------+---------------+------+---------+------+-------+----------+---------------------------------+
 | id | select_type | table                 | partitions | type | possible_keys | key  | key_len | ref  | rows  | filtered | Extra                           |
@@ -188,6 +189,7 @@ mysql> explain select int6_bigger_random from test_distinct_groupby GROUP BY int
 因此，我们的结论也出来了：
 
 > 在语义相同，有索引的情况下：group by和distinct都能使用索引，效率相同。因为group by和distinct近乎等价，distinct可以被看做是特殊的group by。
+> 
 > 在语义相同，无索引的情况下：distinct效率高于group by。原因是distinct 和 group by都会进行分组操作，但group by在Mysql8.0之前会进行隐式排序，导致触发filesort，sql执行效率低下。但从Mysql8.0开始，Mysql就删除了隐式排序，所以，此时在语义相同，无索引的情况下，group by和distinct的执行效率也是近乎等价的。
 
 ### 推荐group by的原因
