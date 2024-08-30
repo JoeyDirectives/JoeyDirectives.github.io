@@ -308,7 +308,14 @@
         var $searchClose = $('.search-icon-close');
         var $searchInput = $('#search-input');
         var $body = $('body');
+        var $waifu = $('#waifu');
 
+        setTimeout(function () {
+            // 增加一个属性
+            $waifu.css('right', '25px');
+            // 删除一个属性
+            $waifu.css('left', '');
+        }, 500);
         $searchOpen.on('click', function (e) {
             e.preventDefault();
             $searchPage.toggleClass('search-active');
