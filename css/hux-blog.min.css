@@ -33,9 +33,7 @@
 .side-catalog::-webkit-scrollbar {  /*隐藏滚轮*/
     display: none;  
 }
-#waifu {
-  right: 25px !important;
-}
+
 body {
   background-color: var(--bg-color);
   margin: 0;
