@@ -19,7 +19,32 @@ tags:
 Spring Boot 中的异步处理基于 Spring Framework 的 @Async 注解，它利用线程池来异步执行任务。通过简单地在方法上加上 @Async，Spring 会自动在后台线程中执行该方法，而不会阻塞主线程。 Spring 的异步支持核心依赖以下两个组件： 
 
 * @EnableAsync：启用异步处理的注解。    
-* @Async：标注需要异步执行的方法。     
+* @Async：标注需要异步执行的方法。
+
+**`@EnableAsync` 注解**
+
+- **作用：** 开启 Spring 的异步处理能力。它通常被添加在 Spring 配置类上，用于告诉 Spring 框架启用异步执行。
+- 实现原理：
+  - `@EnableAsync` 注解内部使用了一个 `AsyncConfigurationSelector` 类，该类会根据条件选择合适的异步配置类。
+  - 默认情况下，如果没有自定义的异步配置类，Spring Boot 会使用 `SimpleAsyncConfiguration`，它会自动配置一个 `ThreadPoolTaskExecutor` 线程池。
+  - `ThreadPoolTaskExecutor` 负责管理线程的创建和调度，用于执行异步任务。
+
+**`@Async` 注解**
+
+- **作用：** 标记一个方法为异步方法。当调用被 `@Async` 注解标记的方法时，Spring 会将该方法提交给线程池异步执行，而不是在当前线程中同步执行。
+- 实现原理：
+  - Spring 使用 AOP（面向切面编程）来实现 `@Async` 注解的功能。
+  - 当 Spring 容器启动时，会扫描所有 Bean，查找带有 `@Async` 注解的方法。
+  - 对于找到的 `@Async` 方法，Spring 会为其创建一个代理对象。
+  - 当调用代理对象的方法时，代理对象会将方法调用委托给线程池中的一个线程异步执行。
+
+### **2.1.SpringBoot 中使用默认线程池**
+
+在`org.springframework.boot.autoconfigure.task`包的`TaskExecutionAutoConfiguration.java`是SpringBoot默认的任务执行自动配置类。
+从`@EnableConfigurationProperties(TaskExecutionProperties.class)`可以知道开启了属性绑定到`TaskExecutionProperties.java`的实体类上。
+
+进入到`TaskExecutionProperties.java`类中，看到属性绑定以`spring.task.execution`为前缀。默认线程池的核心线程数`coreSize=8`，最大线程数`maxSize = Integer.MAX_VALUE`，以及任务等待队列`queueCapacity = Integer.MAX_VALUE`
+因为`Integer.MAX_VALUE`的值为2147483647(2的31次方-1)，所以默认情况下，一般任务队列就可能把内存给堆满了。我们真正使用的时候，还需要对异步任务的执行线程池做一些基础配置，以防止出现内存溢出导致服务不可用的问题。
 
 ## **3、Spring Boot 异步处理的配置**
 
@@ -107,7 +132,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import java.util.concurrent.Executor;
 
 @Configuration
-public class AsyncConfig {
+public class AsyncConfig implements AsyncConfigurer {
 
     @Bean(name = "taskExecutor")
     public Executor taskExecutor() {
@@ -116,8 +141,22 @@ public class AsyncConfig {
         executor.setMaxPoolSize(10);
         executor.setQueueCapacity(25);
         executor.setThreadNamePrefix("Async-");
+        executor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
         executor.initialize();
         return executor;
+    }
+    
+    @Override
+    public Executor getAsyncExecutor() {
+        return asyncTaskExecutor();
+    }
+
+    @Override
+    public AsyncUncaughtExceptionHandler getAsyncUncaughtExceptionHandler() {
+        // 异步任务的异常处理默认情况下只会打印日志信息，不会做任何额外的额处理,SimpleAsyncUncaughtExceptionHandler就是异步任务异常处理的默认实现，如果想要自定义异常处理，只需要AsyncConfigurer接口即可
+        return (throwable, method, objects) -> {
+            log.error("异步任务执行出现异常, message {}, emthod {}, params {}", throwable, method, objects);
+        };
     }
 }
 ```
