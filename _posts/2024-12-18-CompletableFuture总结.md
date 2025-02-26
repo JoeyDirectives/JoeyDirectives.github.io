@@ -169,7 +169,7 @@ public void testCompletableGet() throws InterruptedException, ExecutionException
 
 ### 异步回调方法
 
-![图片](2024-12-18-CompletableFuture总结.assets/640.jpeg)
+![图片](https://note.youdao.com/yws/api/personal/file/WEB0c03ceb046b2c95bc5ab903246321b54?method=download&shareKey=c901ea261a0a94a2d673edf6d299159a)
 
 #### 1、thenRun/thenRunAsync 
 
@@ -364,7 +364,7 @@ exceptionally中异常：java.lang.RuntimeException: 出错了
 
 ### 多任务组合回调
 
-![图片](2024-12-18-CompletableFuture总结.assets/640-1740561087004-1.jpeg)
+![图片](https://note.youdao.com/yws/api/personal/file/WEBa21e61a1ead34edce64616c733deb7dd?method=download&shareKey=d70c5288be49a15b0cebec3f838f143e)
 
 #### 1、AND组合关系
 
@@ -582,7 +582,7 @@ public void testCompletableAnyOf() throws ExecutionException, InterruptedExcepti
 
 ### CompletableFuture使用有哪些注意点
 
-![图片](2024-12-18-CompletableFuture总结.assets/640-1740561087004-2.jpeg)
+![图片](https://note.youdao.com/yws/api/personal/file/WEB7a32c1fc092ae2108c795889c7eae19d?method=download&shareKey=344c0a418402d23ac795a84b815bbd71)
 
 CompletableFuture 使我们的异步编程更加便利的、代码更加优雅的同时，我们也要关注下它，使用的一些注意点。
 
