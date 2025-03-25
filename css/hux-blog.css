@@ -68,7 +68,46 @@
   }
 }
 
+/* 按钮基础样式 */
+    .back-to-top {
+      position: fixed;
+      bottom: 40px;
+      right: 40px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #2196F3;
+      color: white;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      border: none;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
 
+    /* 显示按钮 */
+    .back-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* 鼠标悬停效果 */
+    .back-to-top:hover {
+      background: #1976D2;
+      transform: translateY(-2px);
+    }
+
+    /* 箭头图标 */
+    .arrow {
+      display: block;
+      width: 20px;
+      height: 20px;
+      margin: 0 auto;
+      border-left: 3px solid white;
+      border-top: 3px solid white;
+      transform: rotate(45deg);
+    }
 
 body {
   background-color: var(--bg-color);
