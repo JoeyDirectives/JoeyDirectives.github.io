@@ -26,7 +26,32 @@
 // $(function() {
 //  $("img").addClass("img-responsive");
 // });
+// 获取按钮元素
+  const backToTopBtn = document.querySelector('.back-to-top');
 
+  // 监听滚动事件
+  window.addEventListener('scroll', () => {
+    // 当滚动超过200px时显示按钮
+    if (window.scrollY > 200) {
+      backToTopBtn.classList.add('show');
+    } else {
+      backToTopBtn.classList.remove('show');
+    }
+  });
+
+  // 点击事件处理
+  backToTopBtn.addEventListener('click', () => {
+    // 使用平滑滚动
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+
+    // 兼容旧浏览器的备选方案
+    if (typeof window.scrollY === 'undefined') {
+      document.documentElement.scrollTop = 0;
+    }
+  });
 // responsive tables
 $(document).ready(function() {
     $("table").wrap("<div class='table-responsive'></div>");
